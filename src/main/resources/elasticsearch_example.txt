@@ -1,0 +1,113 @@
+# Tokenizer Test
+
+POST _analyze
+{
+  "tokenizer": "standard",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+POST _analyze
+{
+  "tokenizer": "whitespace",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+
+POST _analyze
+{
+  "tokenizer": "letter",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+POST _analyze
+{
+  "tokenizer": "lowercase",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+# Token Filter
+POST _analyze
+{
+  "filter":  [ "lowercase"],
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+POST _analyze
+{
+  "filter":  [ "uppercase"],
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+POST _analyze
+{
+  "tokenizer":      "keyword",
+  "char_filter":  [ "html_strip" ],
+  "text": "<p>I&apos;m so <b>happy</b>!</p>"
+}
+
+# Analyzer
+POST _analyze
+{
+  "analyzer": "standard",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+POST _analyze
+{
+  "analyzer": "simple",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+
+POST _analyze
+{
+  "analyzer": "stop",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+POST _analyze
+{
+  "analyzer": "whitespace",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+POST _analyze
+{
+  "analyzer": "whitespace",
+  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
+
+
+
+
+
+
+
+
+# Custom Analyzer
+PUT my_index
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_custom_analyzer": {
+          "type":      "custom",
+          "tokenizer": "standard",
+          "char_filter": [
+            "html_strip"
+          ],
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  }
+}
+
+POST my_index/_analyze
+{
+  "analyzer": "my_custom_analyzer",
+  "text": "current weather in Saratov: <strong>clear</strong> sky -5°C 85% humidity wind 2kmh pressure 1015mb"
+}
