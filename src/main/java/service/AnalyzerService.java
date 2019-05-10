@@ -12,7 +12,7 @@ public class AnalyzerService {
 
         System.out.println("\n\n\n###################" + analyzer.getClass().getName() + " Test Result #############################################################");
         for(TweetPost post : reviewList){
-            System.out.println("\n==================Origin Text=====================");
+            System.out.println("\n\n\n\n\n\n\n==================Origin Text=====================");
             System.out.println(post.getText());
             System.out.println("\n==================Analysis Result=====================");
             if( post.getText() != null ){

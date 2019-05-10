@@ -71,14 +71,6 @@ POST _analyze
   "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
 }
 
-POST _analyze
-{
-  "analyzer": "whitespace",
-  "text":      "current weather in Saratov: clear sky -5°C 85% humidity wind 2kmh pressure 1015mb"
-}
-
-
-
 
 
 

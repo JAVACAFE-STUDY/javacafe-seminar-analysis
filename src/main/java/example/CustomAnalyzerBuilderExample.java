@@ -17,7 +17,7 @@ import java.util.List;
 public class CustomAnalyzerBuilderExample {
     public static void main(String args[]) throws Exception{
 
-        List<TweetPost> restaurantInfoVoList =  CsvLoader.readEnglishReview();
+        List<TweetPost> tweetPostList =  CsvLoader.readEnglishReview();
 
         Analyzer yoloAnalyzer = CustomAnalyzer.builder()
                 .withTokenizer("whitespace")
@@ -26,7 +26,7 @@ public class CustomAnalyzerBuilderExample {
                 .addTokenFilter(StopFilterFactory.class, "ignoreCase", "false")
                 .build();
 
-        AnalyzerService.analyzeText(restaurantInfoVoList, yoloAnalyzer);
+        AnalyzerService.analyzeText(tweetPostList, yoloAnalyzer);
 
     }
 

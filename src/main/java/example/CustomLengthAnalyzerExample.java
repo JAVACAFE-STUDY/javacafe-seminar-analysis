@@ -9,8 +9,8 @@ import java.util.List;
 
 public class CustomLengthAnalyzerExample {
     public static void main(String args[]) throws Exception{
-        List<TweetPost> restaurantInfoVoList =  CsvLoader.readEnglishReview();
+        List<TweetPost> tweetPostList =  CsvLoader.readEnglishReview();
         CustomLengthAnalyzer myAnalyzer = new CustomLengthAnalyzer();
-        AnalyzerService.analyzeText(restaurantInfoVoList, myAnalyzer);
+        AnalyzerService.analyzeText(tweetPostList, myAnalyzer);
     }
 }
